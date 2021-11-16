@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  #name of deployment
+  name: comments-depl
+spec:
+  #the number of pods
+  replicas: 1
+  selector:
+    matchLabels:
+      app: comments
+  #specify the config of one pod
+  template:
+    metadata:
+      labels:
+        app: comments
+    spec:
+      containers:
+        - name: comments
+          image: travish99/comments
+              
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: comments-srv
+spec:
+  selector:
+    app: comments
+  #if no type specified, create ClusterIP by default
+  type: ClusterIP
+  ports:
+    - name: comments
+      protocol: TCP
+      port: 4001
+      targetPort: 4001
+      
+

@@ -1,0 +1,20 @@
+#Create posts service\
+
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: posts-srv
+spec:
+  #Create NodePort kind service
+  #Help expose the port to outside world
+  type: NodePort
+  selector:
+    app: posts
+  ports:
+    - name: posts
+      protocol: TCP
+      #the port of the Pod
+      port: 4000
+      #the port of post service
+      targetPort: 4000

@@ -1,0 +1,11 @@
+
+
+                ---------------/posts/create - Posts
+                |
+                |
+                ---------------/posts/:id/comments - Comments
+                |
+                |
+IngressController ------------ /posts - Query
+                |
+                | ------------ / React

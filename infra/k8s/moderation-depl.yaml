@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  #name of deployment
+  name: moderation-depl
+spec:
+  #the number of pods
+  replicas: 1
+  selector:
+    matchLabels:
+      app: moderation
+  #specify the config of one pod
+  template:
+    metadata:
+      labels:
+        app: moderation
+    spec:
+      containers:
+        - name: moderation
+          image: travish99/moderation
+              
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: moderation-srv
+spec:
+  selector:
+    app: moderation
+  #if no type specified, create ClusterIP by default
+  type: ClusterIP
+  ports:
+    - name: moderation
+      protocol: TCP
+      port: 4003
+      targetPort: 4003
+      
+

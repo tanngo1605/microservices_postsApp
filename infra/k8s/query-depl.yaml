@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  #name of deployment
+  name: query-depl
+spec:
+  #the number of pods
+  replicas: 1
+  selector:
+    matchLabels:
+      app: query
+  #specify the config of one pod
+  template:
+    metadata:
+      labels:
+        app: query
+    spec:
+      containers:
+        - name: query
+          image: travish99/query
+              
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: query-srv
+spec:
+  selector:
+    app: query
+  #if no type specified, create ClusterIP by default
+  type: ClusterIP
+  ports:
+    - name: query
+      protocol: TCP
+      port: 4002
+      targetPort: 4002
+      
+

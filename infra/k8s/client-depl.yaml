@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  #name of deployment
+  name: client-depl
+spec:
+  #the number of pods
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client
+  #specify the config of one pod
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      containers:
+        - name: client
+          image: travish99/client
+              
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-srv
+spec:
+  selector:
+    app: client
+  #if no type specified, create ClusterIP by default
+  type: ClusterIP
+  ports:
+    - name: client
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
+      
+
