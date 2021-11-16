@@ -9,3 +9,10 @@
 IngressController ------------ /posts - Query
                 |
                 | ------------ / React
+
+Steps
+Build component services: client, comments, event-bus, moderation, posts, query.
+Write yaml files to deploy and create clusterIP for these component services.
+Update the hostname of the url of API calls in each service (if any)
+Write IngressController to expose port 
+write skaffold to manage deployment.
