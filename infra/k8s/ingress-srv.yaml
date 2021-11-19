@@ -6,6 +6,10 @@ metadata:
     #To let it know we gonna feed some rules
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/use-regex: "true"
+
+#Go to host file to change host to local:
+#Mac: /etc/hosts
+#Win: C:\Windows\System32\Drivers\etc\hosts
 spec:
   rules:
     - host: posts.com
