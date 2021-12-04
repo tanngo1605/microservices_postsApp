@@ -27,6 +27,7 @@ metadata:
   name: client-srv
 spec:
   selector:
+    #must match labels.app in the deployment
     app: client
   #if no type specified, create ClusterIP by default
   type: ClusterIP
