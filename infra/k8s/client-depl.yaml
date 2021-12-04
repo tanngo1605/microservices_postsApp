@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
+  #namespace: {specify a namespace here, default by default}
   #name of deployment
   name: client-depl
 spec:
